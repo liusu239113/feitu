@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CIHwb6Jn.js";var t=e();function n({count:e,ariaLabel:n,className:r,max:i=6}){let a=Math.max(0,Math.min(i,Number.isFinite(e)?Math.trunc(e):0));return(0,t.jsx)(`span`,{"aria-label":n,className:r,role:`img`,children:`★`.repeat(a)})}export{n as t};

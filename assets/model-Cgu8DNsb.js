@@ -1,0 +1,1 @@
+import{wn as e}from"./tradeSettlementTransaction-D2uknCBd.js";var t=class extends Error{constructor(t,n={}){super(t),e(this,`reason`,void 0),e(this,`requestId`,void 0),this.name=`GameAccessError`,this.reason=t,this.requestId=n.requestId}},n=class extends Error{constructor(t){super(t),e(this,`reason`,void 0),this.name=`GameAccessBlockedError`,this.reason=t}};export{t as n,n as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CIHwb6Jn.js";import{t}from"./ScreenBottomAdAction-DfwNOC_u.js";var n=e();function r({remaining:e,disabled:r,onClick:i}){return(0,n.jsx)(t,{"aria-label":`打点门路，观看广告获得黑市储备`,disabled:r,onClick:i,children:(0,n.jsxs)(`span`,{children:[`打点门路(`,e,`)`]})})}export{r as t};

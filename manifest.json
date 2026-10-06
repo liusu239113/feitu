@@ -1,0 +1,228 @@
+{
+  "source": "TapTap Instant Games Chromium cache",
+  "miniapp_id": "tapmcwxgnpylr2xn2p",
+  "app_id": 928383,
+  "h5_base": "https://ma-h5-al.tapimg.com/h/20260925/69238/",
+  "entries": [
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/preload-helper-HclGiUj8.js",
+      "path": "assets/preload-helper-HclGiUj8.js",
+      "cache_header": "data_3@7127040",
+      "cache_body": "data_2@452608",
+      "compressed": null,
+      "cache_size": 1211,
+      "size": 1211,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/style-CXswki38.css",
+      "path": "assets/style-CXswki38.css",
+      "cache_header": "data_3@7135232",
+      "cache_body": "f_00016f",
+      "compressed": "gzip",
+      "cache_size": 81623,
+      "size": 478247,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/gameStartup-D3711leV.js",
+      "path": "assets/gameStartup-D3711leV.js",
+      "cache_header": "data_3@7151616",
+      "cache_body": "f_000170",
+      "compressed": null,
+      "cache_size": 380779,
+      "size": 380779,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/index.html",
+      "path": "index.html",
+      "cache_header": "data_3@7110656",
+      "cache_body": "data_2@446464",
+      "compressed": "gzip",
+      "cache_size": 3323,
+      "size": 9547,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/game-CuK46Pws.js",
+      "path": "assets/game-CuK46Pws.js",
+      "cache_header": "data_3@7118848",
+      "cache_body": "data_2@450560",
+      "compressed": null,
+      "cache_size": 1872,
+      "size": 1872,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/rolldown-runtime-CbXtAM7H.js",
+      "path": "assets/rolldown-runtime-CbXtAM7H.js",
+      "cache_header": "data_3@7143424",
+      "cache_body": "data_1@240640",
+      "compressed": null,
+      "cache_size": 589,
+      "size": 589,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/tradeSettlementTransaction-D2uknCBd.js",
+      "path": "assets/tradeSettlementTransaction-D2uknCBd.js",
+      "cache_header": "data_3@7159808",
+      "cache_body": "f_000171",
+      "compressed": null,
+      "cache_size": 509718,
+      "size": 509718,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/application-BNGUHPJB.js",
+      "path": "assets/application-BNGUHPJB.js",
+      "cache_header": "data_3@7176192",
+      "cache_body": "f_000173",
+      "compressed": null,
+      "cache_size": 475294,
+      "size": 475294,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/model-Cgu8DNsb.js",
+      "path": "assets/model-Cgu8DNsb.js",
+      "cache_header": "data_3@7077888",
+      "cache_body": "data_1@244736",
+      "compressed": null,
+      "cache_size": 382,
+      "size": 382,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/assets-CcQCOIAz.js",
+      "path": "assets/assets-CcQCOIAz.js",
+      "cache_header": "data_3@7168000",
+      "cache_body": "f_000172",
+      "compressed": null,
+      "cache_size": 71547,
+      "size": 71547,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/rewardReceiptRecords-CDXybjeP.js",
+      "path": "assets/rewardReceiptRecords-CDXybjeP.js",
+      "cache_header": "data_3@7184384",
+      "cache_body": "data_2@454656",
+      "compressed": null,
+      "cache_size": 1279,
+      "size": 1279,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/jsx-runtime-CIHwb6Jn.js",
+      "path": "assets/jsx-runtime-CIHwb6Jn.js",
+      "cache_header": "data_3@7192576",
+      "cache_body": "data_3@6979584",
+      "compressed": null,
+      "cache_size": 7899,
+      "size": 7899,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/GatePanel-CcLjiYNm.js",
+      "path": "assets/GatePanel-CcLjiYNm.js",
+      "cache_header": "data_3@7200768",
+      "cache_body": "data_1@245760",
+      "compressed": null,
+      "cache_size": 997,
+      "size": 997,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/react-dom-B5JxdKlt.js",
+      "path": "assets/react-dom-B5JxdKlt.js",
+      "cache_header": "data_3@7208960",
+      "cache_body": "data_2@458752",
+      "compressed": null,
+      "cache_size": 3594,
+      "size": 3594,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/IconButton-Buv8DOec.js",
+      "path": "assets/IconButton-Buv8DOec.js",
+      "cache_header": "data_3@7217152",
+      "cache_body": "data_1@246784",
+      "compressed": null,
+      "cache_size": 529,
+      "size": 529,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/GameIcon-UtODX8d_.js",
+      "path": "assets/GameIcon-UtODX8d_.js",
+      "cache_header": "data_3@7225344",
+      "cache_body": "data_3@7036928",
+      "compressed": null,
+      "cache_size": 6953,
+      "size": 6953,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/ModalLayer-DiFmHDql.js",
+      "path": "assets/ModalLayer-DiFmHDql.js",
+      "cache_header": "data_3@7028736",
+      "cache_body": "data_3@7020544",
+      "compressed": null,
+      "cache_size": 4544,
+      "size": 4544,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/dismissLayerCoordinator-DubCffoP.js",
+      "path": "assets/dismissLayerCoordinator-DubCffoP.js",
+      "cache_header": "data_3@7045120",
+      "cache_body": "data_2@456704",
+      "compressed": null,
+      "cache_size": 1554,
+      "size": 1554,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/PromptDialog-CImFPnuh.js",
+      "path": "assets/PromptDialog-CImFPnuh.js",
+      "cache_header": "data_3@7233536",
+      "cache_body": "data_2@462848",
+      "compressed": null,
+      "cache_size": 1500,
+      "size": 1500,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/host-DTvM016j.js",
+      "path": "assets/host-DTvM016j.js",
+      "cache_header": "data_3@7241728",
+      "cache_body": "data_1@247808",
+      "compressed": null,
+      "cache_size": 521,
+      "size": 521,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/adTimeoutDiagnostics-D-MQa1FF.js",
+      "path": "assets/adTimeoutDiagnostics-D-MQa1FF.js",
+      "cache_header": "data_3@7249920",
+      "cache_body": "data_2@466944",
+      "compressed": null,
+      "cache_size": 2299,
+      "size": 2299,
+      "content_type": "te"
+    },
+    {
+      "url": "https://ma-h5-al.tapimg.com/h/20260925/69238/assets/aegis.min-8Vx-h8Ms.js",
+      "path": "assets/aegis.min-8Vx-h8Ms.js",
+      "cache_header": "data_3@7258112",
+      "cache_body": "f_000174",
+      "compressed": null,
+      "cache_size": 129203,
+      "size": 129203,
+      "content_type": "te"
+    }
+  ]
+}

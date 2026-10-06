@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <style data-webview-boot-guard="">
+#webview-boot-guard {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 28px;
+  background: #1b1c1b;
+  color: #e7e0d5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: left;
+}
+#webview-boot-guard[hidden] { display: none !important; }
+#webview-boot-guard * { box-sizing: border-box; }
+#webview-boot-guard .webview-boot-guard__panel {
+  width: 100%;
+  max-width: 440px;
+  padding: 26px 24px;
+  border: 1px solid #615b52;
+  border-radius: 10px;
+  background: #252624;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
+}
+#webview-boot-guard .webview-boot-guard__eyebrow {
+  margin: 0 0 10px;
+  color: #b8a980;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+#webview-boot-guard h1 {
+  margin: 0;
+  color: #f1eadf;
+  font-size: 24px;
+  line-height: 1.3;
+}
+#webview-boot-guard p {
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+#webview-boot-guard .webview-boot-guard__detail { color: #bcb6ad; }
+#webview-boot-guard .webview-boot-guard__continue {
+  width: 100%;
+  margin-top: 22px;
+  padding: 12px 18px;
+  border: 1px solid #a89562;
+  border-radius: 6px;
+  background: #887342;
+  color: #fff8e9;
+  font: inherit;
+  font-weight: 700;
+}
+#webview-boot-guard .webview-boot-guard__continue:focus-visible {
+  outline: 3px solid #d5c28e;
+  outline-offset: 3px;
+}
+</style>
+    <script data-webview-boot-guard="">(function () {
+  var minimumMajor = 104;
+  var root = document.documentElement;
+  var match = /(?:Chrome|Chromium)\/(\d+)/.exec(navigator.userAgent || "");
+  var currentMajor = match ? parseInt(match[1], 10) : null;
+  var requiresConfirmation = currentMajor !== null && currentMajor < minimumMajor;
+  var confirmed = !requiresConfirmation;
+  var failureTitle = "";
+  var failureMessage = "";
+  var failureDetail = "";
+  var failureState = "failed";
+  var timerId = 0;
+  var takenOver = false;
+  var proceedCallbacks = [];
+
+  function byId(id) {
+    return document.getElementById(id);
+  }
+
+  function render(title, message, detail, role) {
+    var guard = byId("webview-boot-guard");
+    if (!guard) return;
+    guard.hidden = false;
+    guard.setAttribute("role", role);
+    guard.setAttribute("aria-live", role === "alert" ? "assertive" : "polite");
+    byId("webview-boot-guard-title").textContent = title;
+    byId("webview-boot-guard-message").textContent = message;
+    var detailElement = byId("webview-boot-guard-detail");
+    detailElement.textContent = detail || "";
+    detailElement.hidden = !detail;
+  }
+
+  function showWarning() {
+    render(
+      "设备内核需要更新",
+      "当前系统浏览内核为 Chromium " + currentMajor + "，游戏需要 Chromium " + minimumMajor + " 或更高版本。",
+      "部分画面或功能可能异常。建议先更新 Android System WebView（或 Chrome）；也可以确认风险后继续尝试。",
+      "alert"
+    );
+    var continueButton = byId("webview-boot-guard-continue");
+    if (continueButton) {
+      continueButton.textContent = "仍然进入游戏";
+      continueButton.onclick = proceed;
+      continueButton.hidden = false;
+    }
+  }
+
+  function showReloadButton() {
+    var reloadButton = byId("webview-boot-guard-continue");
+    if (!reloadButton) return;
+    reloadButton.textContent = "重新加载";
+    reloadButton.onclick = function () {
+      window.location.reload();
+    };
+    reloadButton.hidden = false;
+  }
+
+  function renderStoredFailure() {
+    if (takenOver || !failureMessage) return;
+    if (requiresConfirmation && !confirmed) return;
+    if (timerId) window.clearTimeout(timerId);
+    timerId = 0;
+    root.setAttribute("data-webview-boot", failureState);
+    render(
+      failureTitle,
+      failureMessage,
+      failureDetail,
+      "alert"
+    );
+    showReloadButton();
+  }
+
+  function scheduleFailureTimeout() {
+    if (timerId) window.clearTimeout(timerId);
+    timerId = window.setTimeout(function () {
+      showFailure("设备等待启动超时，当前 WebView 可能无法运行游戏。")
+    }, 12000);
+  }
+
+  function proceed() {
+    if (confirmed) return;
+    confirmed = true;
+    bootGuard.confirmed = true;
+    root.setAttribute("data-webview-boot", "warning-accepted");
+    render(
+      "正在尝试启动基地",
+      "已确认兼容风险，正在继续启动游戏…",
+      "如果无法正常进入，请更新 Android System WebView（或 Chrome）后重试。",
+      "status"
+    );
+    var continueButton = byId("webview-boot-guard-continue");
+    if (continueButton) continueButton.hidden = true;
+    var callbacks = proceedCallbacks.slice();
+    proceedCallbacks.length = 0;
+    for (var index = 0; index < callbacks.length; index += 1) {
+      callbacks[index]();
+    }
+    if (failureMessage) {
+      renderStoredFailure();
+      return;
+    }
+    scheduleFailureTimeout();
+  }
+
+  function showFailure(message) {
+    if (takenOver) return;
+    failureTitle = "基地启动未完成";
+    failureMessage = message || "游戏主程序未能完成加载。";
+    failureDetail = "请检查网络后重新加载；若仍无法进入，请在 TapTap 右上角开启开发调试后重试。";
+    failureState = "failed";
+    renderStoredFailure();
+  }
+
+  function showResourceFailure(resourceName) {
+    if (takenOver) return;
+    failureTitle = "基地资源加载失败";
+    failureMessage = "游戏启动资源未能载入，可能是当前网络或 TapTap 缓存异常。";
+    failureDetail = resourceName
+      ? "失败资源：" + resourceName
+      : "请检查网络后重新加载；若持续失败，请在 TapTap 右上角开启开发调试。";
+    failureState = "resource-failed";
+    renderStoredFailure();
+  }
+
+  function readFailedResourceName(event) {
+    var target = event && event.target;
+    if (!target || target === window) return "";
+    var tagName = target.tagName;
+    var source = "";
+    if (tagName === "SCRIPT") {
+      source = target.src || "";
+    } else if (tagName === "LINK" && target.rel === "modulepreload") {
+      source = target.href || "";
+    }
+    if (!source) return "";
+    var path = source.split(/[?#]/, 1)[0];
+    var name = path.slice(path.lastIndexOf("/") + 1);
+    try {
+      return decodeURIComponent(name).slice(0, 120);
+    } catch (_) {
+      return name.slice(0, 120);
+    }
+  }
+
+  function onDocumentReady() {
+    var continueButton = byId("webview-boot-guard-continue");
+    if (continueButton) continueButton.onclick = proceed;
+    if (requiresConfirmation && !confirmed) {
+      showWarning();
+      return;
+    }
+    if (failureMessage) {
+      renderStoredFailure();
+      return;
+    }
+    scheduleFailureTimeout();
+  }
+
+  root.setAttribute("data-webview-minimum-chromium-major", String(minimumMajor));
+  if (currentMajor !== null) {
+    root.setAttribute("data-webview-chromium-major", String(currentMajor));
+  }
+  root.setAttribute("data-webview-boot", requiresConfirmation ? "warning" : "pending");
+
+  var bootGuard = {
+    requiresConfirmation: requiresConfirmation,
+    confirmed: confirmed,
+    onProceed: function (callback) {
+      if (confirmed) {
+        callback();
+        return;
+      }
+      proceedCallbacks.push(callback);
+    },
+    takeover: function () {
+      takenOver = true;
+      if (timerId) window.clearTimeout(timerId);
+      root.setAttribute("data-webview-boot", "started");
+      var guard = byId("webview-boot-guard");
+      if (guard && guard.parentNode) guard.parentNode.removeChild(guard);
+    },
+    fail: showFailure,
+    resourceFailed: showResourceFailure
+  };
+  window.__WASTELAND_WEBVIEW_BOOT_GUARD__ = bootGuard;
+
+  window.addEventListener("error", function (event) {
+    var resourceName = readFailedResourceName(event);
+    if (resourceName) {
+      showResourceFailure(resourceName);
+      return;
+    }
+    showFailure("游戏启动过程中发生执行错误。")
+  }, true);
+  window.addEventListener("unhandledrejection", function () {
+    showFailure("游戏启动过程中发生未处理错误。")
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onDocumentReady, false);
+  } else {
+    onDocumentReady();
+  }
+}());</script>
+
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1B1C1B" />
+    <title>废土搜打撤</title>
+    <script type="module" crossorigin src="./assets/game-CuK46Pws.js?local=928383"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-HclGiUj8.js">
+    <link rel="stylesheet" crossorigin href="./assets/style-CXswki38.css">
+  </head>
+  <body>
+    <aside id="webview-boot-guard" role="status" aria-live="polite" aria-labelledby="webview-boot-guard-title">
+<section class="webview-boot-guard__panel">
+  <p class="webview-boot-guard__eyebrow">设备兼容检查</p>
+  <h1 id="webview-boot-guard-title">正在启动基地</h1>
+  <p id="webview-boot-guard-message">正在检查设备运行环境…</p>
+  <p id="webview-boot-guard-detail" class="webview-boot-guard__detail" hidden></p>
+  <button id="webview-boot-guard-continue" class="webview-boot-guard__continue" type="button" hidden>仍然进入游戏</button>
+</section>
+</aside>
+
+    <div id="app"></div>
+  </body>
+</html>

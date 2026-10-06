@@ -1,0 +1,1 @@
+function e(e,t){e({type:`EXPEDITION`,command:t})}function t(e,t){return e({type:`EXPEDITION`,command:t})}export{e as n,t};

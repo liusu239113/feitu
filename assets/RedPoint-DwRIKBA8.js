@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CIHwb6Jn.js";var t=e();function n({visible:e,count:n,className:r}){return e?(0,t.jsx)(`i`,{"aria-hidden":`true`,className:`red-point${n===void 0?``:` red-point--count`}${r?` ${r}`:``}`,children:n===void 0?null:n>99?`99+`:n}):null}export{n as t};

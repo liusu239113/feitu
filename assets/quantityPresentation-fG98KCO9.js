@@ -1,0 +1,1 @@
+var e=new Intl.NumberFormat(`zh-CN`),t=new Intl.NumberFormat(`zh-CN`,{maximumFractionDigits:1}),n=1e4;function r(r){return r<n?e.format(r):`${t.format(r/n)}w`}export{r as t};

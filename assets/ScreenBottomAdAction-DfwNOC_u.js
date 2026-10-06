@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CIHwb6Jn.js";import{t}from"./GameIcon-UtODX8d_.js";import{t as n}from"./ScreenBottomNavigation-e3tXxdMB.js";var r=e();function i({children:e,...i}){return(0,r.jsxs)(n,{...i,className:`screen-bottom-ad-action`,children:[(0,r.jsx)(t,{name:`ad`}),e]})}export{i as t};

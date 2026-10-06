@@ -1,0 +1,1 @@
+var e=Object.freeze({diet:`饮食`,medical:`医疗`,building:`建材`,mechanical:`工业`,valuable:`贵重`,intelligence:`情报`,equipment:`装备`});function t(t){return t.kind===`equipment`?{weapon:`武器`,armor:`护甲`,accessory:`饰品`}[t.slot]:t.tags.includes(`special`)?`特殊`:(t.availability??`standard`)===`limited`?`限定`:t.lootType===null?`物品`:e[t.lootType]}export{t as n,e as t};
